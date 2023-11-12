@@ -1,0 +1,14 @@
+{% extends "account/base.html" %}
+{% block title %} Войти {% endblock %}
+{% block content%}
+<form method="post">
+    {% csrf_token %}
+    <label for="{{ form.login.id_for_label }}"> {{form.login.label}} </label>
+    {{ form.login }}
+    <label for="{{ form.password.id_for_label }}"> {{form.password.label}}</label>
+    {{form.password}}
+    <button type="submit">Войти</button>
+</form>
+{% endblock  %}
+
+
