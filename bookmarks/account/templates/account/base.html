@@ -3,9 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock %}</title>
+
+    <nav>
+        <ul>
+            <span class="logo">
+        Заметки
+    </span>
+
+            {% if not request.user.is_authenticated %}
+            <li>
+                <a href="{% url 'login' %}">Войти</a>
+            </li>
+            {% else %}
+            <li>
+                <a href="{% url 'dashboard' %}"> Дашборд </a>
+            </li>
+            <li>
+                <a href="#">Картинки</a>
+            </li>
+            <li>
+                <a href="#">Люди</a>
+            </li>
+
+            {% endif %}
+        </ul>
+    </nav>
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+{% if request.user.is_authenticated%}
+<h2>Привет юзер : {{ request.user.first_name|default:request.user.username }}</h2>
+<a href="{% url 'logout' %}">Выйти</a>
+{% else %}
+<a href="{% url 'login' %}">Войти</a>
+{% endif%}
+
+{% block content %}
+{% endblock %}
 </body>
 </html>
