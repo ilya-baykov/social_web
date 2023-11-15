@@ -11,5 +11,10 @@ def home(requset):
     return HttpResponse("Вы вошли в аккаунт")
 
 
+@login_required
+def dashboard(request):
+    return render(request, 'account/dashboard.html', {"section": 'dashboard'})
+
+
 class CustomLoginView(LoginView):
     form_class = CustomAuthenticationForm
