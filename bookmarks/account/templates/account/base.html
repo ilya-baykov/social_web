@@ -10,18 +10,14 @@
         Заметки
     </span>
 
-            {% if not request.user.is_authenticated %}
-            <li>
-                <a href="{% url 'login' %}">Войти</a>
-            </li>
-            {% else %}
-            <li>
+            {% if request.user.is_authenticated %}
+            <li {% if section == 'dashboard' %}class="selected"{% endif %}>
                 <a href="{% url 'dashboard' %}"> Дашборд </a>
             </li>
-            <li>
+            <li {% if sectiom == 'images' %} class = 'images' {%endif%}%>
                 <a href="#">Картинки</a>
             </li>
-            <li>
+            <li {% if sectiom == 'people' %} class = 'people' {%endif%}%>
                 <a href="#">Люди</a>
             </li>
 
@@ -33,9 +29,9 @@
 {% if request.user.is_authenticated%}
 <h2>Привет юзер : {{ request.user.first_name|default:request.user.username }}</h2>
 <a href="{% url 'logout' %}">Выйти</a>
-{% else %}
+{% elif request.resolver_match.url_name != 'login' %}
 <a href="{% url 'login' %}">Войти</a>
-{% endif%}
+{% endif %}
 
 {% block content %}
 {% endblock %}
