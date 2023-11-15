@@ -27,13 +27,14 @@
     </nav>
 </head>
 <body>
-{% if request.user.is_authenticated%}
-<h2>Привет юзер : {{ request.user.first_name|default:request.user.username }}</h2>
-<a href="{% url 'logout' %}">Выйти</a>
-{% elif request.resolver_match.url_name != 'login' %}
-<a href="{% url 'login' %}">Войти</a>
+{% if request.user.is_authenticated %}
+    <h2>Привет юзер: {{ request.user.first_name|default:request.user.username }}</h2>
+    {% if request.resolver_mathc.url_name != "password_change"%}
+    <a href="{% url 'logout' %}">Выйти</a>
+    {% endif %}
+{% elif request.resolver_match.url_name != 'login'  %}
+    <a href="{% url 'login' %}">Войти</a>
 {% endif %}
-
 {% block content %}
 {% endblock %}
 </body>
