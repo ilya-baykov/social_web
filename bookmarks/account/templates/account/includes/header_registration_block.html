@@ -1,0 +1,24 @@
+<header>
+    <span> Заметки </span>
+    <nav>
+        <ul class="menu">
+            <div class="auth">
+                {% if request.user.is_authenticated %}
+
+                    <p>Привет,{{ request.user.username|default:'Пользователь'}}/</p>
+                    <li>
+                        <a href="{% url 'logout' %}">Выйти</a>
+                    </li>
+
+                {% else %}
+                    {% if request.resolver_match.url_name != 'login' %}
+                        <li>
+                            <a href="{% url 'login' %}">Войти</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+            </div>
+
+        </ul>
+    </nav>
+</header>

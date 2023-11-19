@@ -1,6 +1,9 @@
 {% extends 'account/base.html' %}
 {% block title %}Dashboard{% endblock %}
 {% block content %}
-    <h1>Дашборд</h1>
-    <p>Добро пожаловать в ваш дашборд</p>
+
+{% include 'account/includes/header_main.html' with section='dashboard' %}
+
+<h1>Дашборд</h1>
+<p>Добро пожаловать в ваш дашборд</p>
 {% endblock %}

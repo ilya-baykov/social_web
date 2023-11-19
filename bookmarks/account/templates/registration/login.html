@@ -1,14 +1,21 @@
 {% extends "account/base.html" %}
+{% load custom_tags %}
 
 {% block title %} Вход {% endblock %}
 
 {% block content %}
+{% include 'account/includes/header_registration_block.html' %}
 
 <form action="{% url 'login' %}" method="post">
     {{form.as_p}}
     {% csrf_token %}
-    <input  type="hidden" name="next" value="{{next}}"/>
-    <p><input type="submit" value="Войти" /></p>
+    <input type="hidden" name="next" value="{{next}}"/>
+    <p><input type="submit" value="Войти"/></p>
 </form>
 <a href="{% url 'password_reset' %}">Забыли пароль?</a>
+
+
+
+
+
 {% endblock %}

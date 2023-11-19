@@ -5,36 +5,8 @@
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock %}</title>
     <link href="{% static 'account/css/main_account.css' %}" rel="stylesheet">
-
-    <nav>
-        <ul>
-            <span class="logo">
-        Заметки
-    </span>
-
-            {% if request.user.is_authenticated %}
-            <li {% if section == 'dashboard' %}class="selected"{% endif %}>
-                <a href="{% url 'dashboard' %}"> Дашборд </a>
-            </li>
-            <li {% if sectiom == 'images' %} class = 'images' {%endif%}%>
-                <a href="#">Картинки</a>
-            </li>
-            <li {% if sectiom == 'people' %} class = 'people' {%endif%}%>
-                <a href="#">Люди</a>
-            </li>
-            {% endif %}
-        </ul>
-    </nav>
 </head>
 <body>
-{% if request.user.is_authenticated %}
-    <h2>Привет юзер: {{ request.user.first_name|default:request.user.username }}</h2>
-    {% if request.resolver_mathc.url_name != "password_change"%}
-    <a href="{% url 'logout' %}">Выйти</a>
-    {% endif %}
-{% elif request.resolver_match.url_name != 'login'  %}
-    <a href="{% url 'login' %}">Войти</a>
-{% endif %}
 {% block content %}
 {% endblock %}
 </body>
