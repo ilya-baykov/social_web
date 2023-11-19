@@ -1,0 +1,11 @@
+{% extends 'account/base.html' %}
+{% block title %}Пользователь{% endblock %}
+{% block content %}
+
+{% include 'account/includes/header_main.html ' %}
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+<!--    <button type="submit">Сохранить</button>-->
+</form>
+{% endblock %}

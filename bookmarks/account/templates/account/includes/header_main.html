@@ -18,7 +18,7 @@
 
             <div class="auth">
                 {% if request.user.is_authenticated%}
-                    <p>Привет,{{ request.user.username|default:'Пользователь'}}/</p>
+                <p><a href="{% url 'profile' %}">{{ request.user.username|default:'Пользователь'}}</a></p>
                     <li>
                         <a href="{% url 'logout' %}">Выйти</a>
                     </li>
