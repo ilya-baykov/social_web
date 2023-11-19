@@ -2,10 +2,14 @@
 {% block title %}Пользователь{% endblock %}
 {% block content %}
 
-{% include 'account/includes/header_main.html ' %}
+{% include 'account/includes/header_main.html' %}
 <form method="post" action="">
     {% csrf_token %}
     {{ form.as_p }}
-<!--    <button type="submit">Сохранить</button>-->
+    <!--    <button type="submit">Сохранить</button>-->
 </form>
+<form action="{% url 'password_change' %}" target="_blank">
+    <button>Сменить пароль</button>
+</form>
+
 {% endblock %}
