@@ -5,7 +5,8 @@
 
 {% block content %}
 {% include 'account/includes/header_registration_block.html' %}
-
+<p>Заполните поля для входа в свою учётную запись. Если вы еще не зарегестрировались, можете это сделать по
+    <a href="{% url 'register' %}">ссылке</a>.</p>
 <form action="{% url 'login' %}" method="post">
     {{form.as_p}}
     {% csrf_token %}
@@ -13,9 +14,6 @@
     <p><input type="submit" value="Войти"/></p>
 </form>
 <a href="{% url 'password_reset' %}">Забыли пароль?</a>
-
-
-
 
 
 {% endblock %}
