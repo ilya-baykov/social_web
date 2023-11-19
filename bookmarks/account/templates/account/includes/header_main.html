@@ -18,8 +18,8 @@
 
             <div class="auth">
                 {% if request.user.is_authenticated%}
-                <p><a href="{% url 'profile' %}">{{ request.user.username|default:'Пользователь'}}</a></p>
-                    <li>
+                <p {% if section == 'profile' %} class='selected' {% endif %}><a href="{% url 'profile' %}">{{ request.user.username|default:'Пользователь'}}</a></p>
+                    <li >
                         <a href="{% url 'logout' %}">Выйти</a>
                     </li>
                 {% else %}

@@ -2,7 +2,7 @@
 {% block title %}Пользователь{% endblock %}
 {% block content %}
 
-{% include 'account/includes/header_main.html' %}
+{% include 'account/includes/header_main.html' with section='profile' %}
 <form method="post" action="">
     {% csrf_token %}
     {{ form.as_p }}

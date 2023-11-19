@@ -1,0 +1,13 @@
+{% extends 'account/base.html' %}
+{% block title %}Регистрация{% endblock %}
+{% block content %}
+
+{% include 'account/includes/header_registration_block.html'  %}
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Зарегистрироваться">
+</form>
+
+
+{% endblock %}
