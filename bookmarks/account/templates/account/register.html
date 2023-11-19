@@ -3,6 +3,8 @@
 {% block content %}
 
 {% include 'account/includes/header_registration_block.html'  %}
+<h1>Регистрация нового пользователя</h1>
+<p>Для регистрации на нашем сайте, заполните форму ниже</p>
 <form method="post">
     {% csrf_token %}
     {{form.as_p}}
