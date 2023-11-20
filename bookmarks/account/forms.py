@@ -54,3 +54,4 @@ class ProfileEditForm(forms.ModelForm):
             'date_of_birth': 'Дата Рождения',
             'photo': 'Фото'
         }
+

@@ -19,13 +19,12 @@ def profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            return render(request, template_name='account/edit_successfully.html',
-                          context={"user_form": user_form, "profile_form": profile_form, "status": True})
+            return render(request, template_name='account/edit_successfully.html')
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
     return render(request, template_name='account/user_profile.html',
-                  context={"user_form": user_form, "profile_form": profile_form, "status": False})
+                  context={"user_form": user_form, "profile_form": profile_form})
 
 
 @login_required
