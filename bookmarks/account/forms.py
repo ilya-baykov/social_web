@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
+from .models import *
 
 
 class CustomAuthenticationForm(AuthenticationForm):
@@ -12,17 +13,6 @@ class CustomAuthenticationForm(AuthenticationForm):
         ),
         'inactive': ("Этот аккаунт больше не активен "),
     }
-
-
-class UserProfileForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ['first_name', 'last_name', 'email']
-        labels = {
-            'first_name': 'Имя',
-            'last_name': 'Фамилия',
-            'email': 'Электронная почта',
-        }
 
 
 class UserRegistrationForm(forms.ModelForm):
@@ -43,3 +33,24 @@ class UserRegistrationForm(forms.ModelForm):
         if cd['password'] != cd['password2']:
             raise forms.ValidationError("Пароли не совпадают")
         return cd['password2']
+
+
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+        labels = {
+            'first_name': 'Имя',
+            'last_name': 'Фамилия',
+            'email': 'Электронная почта',
+        }
+
+
+class ProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['date_of_birth', 'photo']
+        labels = {
+            'date_of_birth': 'Дата Рождения',
+            'photo': 'Фото'
+        }

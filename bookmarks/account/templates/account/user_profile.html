@@ -3,13 +3,17 @@
 {% block content %}
 
 {% include 'account/includes/header_main.html' with section='profile' %}
-<form method="post" action="">
+{% if status %}
+<h2>Изменения были успешно сохранены на сайте</h2>
+{% endif %}
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <!--    <button type="submit">Сохранить</button>-->
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+     <p><input type="submit" value="Сохранить изменения"></p>
 </form>
-<form action="{% url 'password_change' %}" target="_blank">
-    <button>Сменить пароль</button>
-</form>
+
+    <a href="{% url 'password_change' %}">Сменить пароль</a>
+
 
 {% endblock %}
