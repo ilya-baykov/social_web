@@ -4,16 +4,19 @@
 
 {% include 'account/includes/header_main.html' with section='profile' %}
 {% if status %}
-<h2>Изменения были успешно сохранены на сайте</h2>
+    <h2>Изменения были успешно сохранены на сайте</h2>
 {% endif %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ user_form.as_p }}
     {{ profile_form.as_p }}
-     <p><input type="submit" value="Сохранить изменения"></p>
+    <!-- Добавленный код для отображения фотографии -->
+    {% if profile_form.instance.photo %}
+        <img width="420" height="400" src="{{ profile_form.instance.photo.url }}" alt="Фото пользователя">
+    {% endif %}
+    <p><input type="submit" value="Сохранить изменения"></p>
 </form>
 
-    <a href="{% url 'password_change' %}">Сменить пароль</a>
-
+<a href="{% url 'password_change' %}">Сменить пароль</a>
 
 {% endblock %}
