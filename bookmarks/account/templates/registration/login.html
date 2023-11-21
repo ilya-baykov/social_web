@@ -3,17 +3,30 @@
 
 {% block title %} Вход {% endblock %}
 
+{% block styles_link %}
+
+{% load static %}
+<link href="{% static 'account/css/login.css' %}" rel="stylesheet">
+
+{% endblock %}
+
 {% block content %}
 {% include 'account/includes/header_registration_block.html' %}
-<p>Заполните поля для входа в свою учётную запись. Если вы еще не зарегестрировались, можете это сделать по
-    <a href="{% url 'register' %}">ссылке</a>.</p>
-<form action="{% url 'login' %}" method="post">
-    {{form.as_p}}
-    {% csrf_token %}
-    <input type="hidden" name="next" value="{{next}}"/>
-    <p><input type="submit" value="Войти"/></p>
-</form>
-<a href="{% url 'password_reset' %}">Забыли пароль?</a>
 
+<div class="loginBox"><img class="user" src="https://i.ibb.co/yVGxFPR/2.png" height="100px" width="100px">
+    <h3>Sign in here</h3>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <div class="inputBox">
+            {{form.as_p}}
+            <input type="hidden" name="next" value="{{next}}"/>
+        </div>
+        <input type="submit" name="" value="Login">
+    </form>
+    <a href="{% url 'password_reset' %}">Forget Password<br> </a>
+    <div class="text-center">
+        <p style="color: #59238F;"><a href="{% url 'register' %}">Sign-Up</a></p>
+    </div>
 
+</div>
 {% endblock %}

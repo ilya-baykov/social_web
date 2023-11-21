@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock %}</title>
     <link href="{% static 'account/css/main_account.css' %}" rel="stylesheet">
+    {% block styles_link %} {% endblock %}
 </head>
 <body>
 {% if messages %}
