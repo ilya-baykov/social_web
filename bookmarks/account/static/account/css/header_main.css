@@ -1,0 +1,75 @@
+/* styles_alternative.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+}
+
+header {
+    background-color: #212529;
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px; /* Регулируйте размер логотипа по вашему усмотрению */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-right: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.menu a:hover {
+    background-color: #495057;
+}
+
+.selected a {
+    background-color: #495057;
+}
+
+.auth {
+    display: flex;
+    align-items: center;
+}
+
+.auth p {
+    margin-right: 20px;
+}
+
+.auth a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.auth a:hover {
+    background-color: #495057;
+}
