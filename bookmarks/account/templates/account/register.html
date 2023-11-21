@@ -1,15 +1,23 @@
 {% extends 'account/base.html' %}
 {% block title %}Регистрация{% endblock %}
-{% block content %}
 
-{% include 'account/includes/header_registration_block.html'  %}
-<h1>Регистрация нового пользователя</h1>
-<p>Для регистрации на нашем сайте, заполните форму ниже</p>
-<form method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Зарегистрироваться">
-</form>
-
-
+{% block styles_link %}
+{% load static %}
+<link href="{% static 'account/css/registration.css' %}" rel="stylesheet">
 {% endblock %}
+
+{% block content %}
+<div class="registration-container">
+    <div class="registration-header">
+        Registration Form
+    </div>
+    <form class="registration-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="mt-4">
+            <button type="submit">Зарегистрироваться<i class="fa fa-long-arrow-right"></i></button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
