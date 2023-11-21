@@ -16,15 +16,17 @@ class CustomAuthenticationForm(AuthenticationForm):
 
 
 class UserRegistrationForm(forms.ModelForm):
+    date_of_birth = forms.DateField(label='Дата рождения', required=False, widget=forms.DateInput(attrs={'type': 'date'}))
+    photo = forms.ImageField(label="Фото", required=False)
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Повторите пароль', widget=forms.PasswordInput)
 
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'email']
+        fields = ['first_name', 'last_name', 'email']
         labels = {
-            'username': 'Никнейм',
             'first_name': 'Имя:',
+            'last_name': "Фамиилия",
             'email': 'Электронная почта',
         }
 
