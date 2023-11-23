@@ -22,5 +22,6 @@ urlpatterns = [
     path("", dashboard, name='dashboard'),
     path("profile/", profile, name='profile'),
     path('register/', register, name='register'),
+    path('social-auth/', include('social_django.urls', namespace='social')),
 
 ]
