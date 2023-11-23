@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social_django',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,10 @@ MIDDLEWARE = [
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
+
 ]
 
 ROOT_URLCONF = 'bookmarks.urls'
@@ -137,3 +142,11 @@ EMAIL_USE_TLS = True
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '642272118121572'  # ИД приложения Facebook
+SOCIAL_AUTH_FACEBOOK_SECRET = '91f0b7979e71f5a233f8a95188921e72'  # Секрет приложения Facebook
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '312593464795-id666d4grc2chde8cl3777h4492h0ig4.apps.googleusercontent.com' # ИД клиента Google
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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' # Секрет клиента Google
