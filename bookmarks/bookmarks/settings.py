@@ -147,6 +147,18 @@ SOCIAL_AUTH_FACEBOOK_KEY = '642272118121572'  # ИД приложения Facebo
 SOCIAL_AUTH_FACEBOOK_SECRET = '91f0b7979e71f5a233f8a95188921e72'  # Секрет приложения Facebook
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '312593464795-id666d4grc2chde8cl3777h4492h0ig4.apps.googleusercontent.com'  # ИД клиента Google
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'  # Секрет клиента Google
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '312593464795-id666d4grc2chde8cl3777h4492h0ig4.apps.googleusercontent.com' # ИД клиента Google
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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' # Секрет клиента Google
+SOCIAL_AUTH_PIPELINE = [
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    'social_core.pipeline.user.create_user',
+    'account.authentication.create_profile',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+]
