@@ -1,7 +1,7 @@
 {% extends "account/base.html" %}
 {% block title %}Bookmark an image{% endblock %}
 {% block content %}
-{% include 'account/includes/header_main.html' with section='dashboard' %}
+{% include 'account/includes/header_main.html' with section='images' %}
 <h1>Bookmark an image</h1>
 <img src="{{ request.GET.url }}" class="image-preview">
 <form method="post">
