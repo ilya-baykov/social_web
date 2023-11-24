@@ -32,4 +32,3 @@ class ImagesCreateForm(forms.ModelForm):
         if commit:
             image.save()
         return image
-

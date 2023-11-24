@@ -17,7 +17,8 @@ def image_create(request):
             new_image.user = request.user
             new_image.save()
             messages.success(request, "Изображение успешно добавлено")
-            return redirect(new_image.get_absolute_url())
+            # return redirect(new_image.get_absolute_url())
+            return render(request, 'account/dashboard.html')
     else:
-        form = ImagesCreateForm()
+        form = ImagesCreateForm(request.GET)
     return render(request, 'images/image/create.html', {'section': 'images', 'form': form})
