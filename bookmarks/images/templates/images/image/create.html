@@ -3,7 +3,7 @@
 {% block content %}
 {% include 'account/includes/header_main.html' with section='images' %}
 <h1>Bookmark an image</h1>
-<img src="{{ request.GET.url }}" class="image-preview">
+<img width="380" height="285" src="{{ request.GET.url }}" class="image-preview">
 <form method="post">
     {{ form.as_p }}
     {% csrf_token %}

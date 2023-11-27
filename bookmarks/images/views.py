@@ -1,4 +1,5 @@
-from django.http import JsonResponse
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -30,6 +31,21 @@ def image_create(request):
 def image_detail(request, id, slug):
     image = get_object_or_404(Images, id=id, slug=slug)
     return render(request, 'images/image/image_detail.html', {'image': image})
+
+
+@login_required
+def image_list(request):
+    images = Images.objects.all()
+    paginator = Paginator(images, 2)
+    page = request.GET.get('page')
+    images_only = request.GET.get('images_only')
+    try:
+        images = paginator.page(page)
+    except PageNotAnInteger:
+        images = paginator.page(1)
+    except EmptyPage:
+        if images_only:
+            return HttpResponse("")
 
 
 @login_required
