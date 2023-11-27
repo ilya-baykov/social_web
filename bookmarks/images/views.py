@@ -36,7 +36,7 @@ def image_detail(request, id, slug):
 @login_required
 def image_list(request):
     images = Images.objects.all()
-    paginator = Paginator(images, 2)
+    paginator = Paginator(images, 4)
     page = request.GET.get('page')
     images_only = request.GET.get('images_only')
     try:
@@ -46,6 +46,10 @@ def image_list(request):
     except EmptyPage:
         if images_only:
             return HttpResponse("")
+        images_only = paginator.page(paginator.num_pages)
+    if images_only:
+        return render(request, 'images/image/list_images.html', {'images': images})
+    return render(request, 'images/image/list.html', {'images': images})
 
 
 @login_required
