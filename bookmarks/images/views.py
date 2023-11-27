@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import *
@@ -18,7 +18,12 @@ def image_create(request):
             new_image.save()
             messages.success(request, "Изображение успешно добавлено")
             # return redirect(new_image.get_absolute_url())
-            return render(request, 'account/dashboard.html')
+            return redirect(new_image.get_absolute_url())
     else:
         form = ImagesCreateForm(request.GET)
     return render(request, 'images/image/create.html', {'section': 'images', 'form': form})
+
+
+def image_detail(request, id, slug):
+    image = get_object_or_404(Images, id=id, slug=slug)
+    return render(request, 'images/image/image_detail.html', {'image': image})
